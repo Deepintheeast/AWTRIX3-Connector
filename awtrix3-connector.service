@@ -1,1 +1,14 @@
+[Unit]
+Description=AWTRIX3-Connector Service
+After=multi-user.target
 
+[Service]
+WorkingDirectory=/home/pi/scripts/AWTRIX3-Connector
+Type=idle
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/scripts/AWTRIX3-Connector/awtrix3connect.py /dev/null 2>&1
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
