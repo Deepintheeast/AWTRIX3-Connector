@@ -1,4 +1,7 @@
-"""Klassen und Funktionen für die Anbindung an die Datenbanken und das Senden an AWTRIX3"""
+"""Klassen und Funktionen für die Anbindung an die Datenbanken und das Senden an AWTRIX3
+
+Version 0.1.0
+"""
 
 import configparser
 import threading
