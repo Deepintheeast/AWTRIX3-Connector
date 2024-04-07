@@ -56,7 +56,7 @@ if [  $# -eq 0 ]; then
     sudo chmod 644 /etc/systemd/system/awtrix3-connector.service
     sudo systemctl daemon-reload
     sudo systemctl enable awtrix3-connector.service
-    echo "alias awtrixconnect3='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
+    echo "alias awtrixc3onnect='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
     echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 else
@@ -71,7 +71,7 @@ else
      sudo chmod 644 /etc/systemd/system/awtrix3-connector-$1.service
      sudo systemctl daemon-reload
      sudo systemctl enable awtrix3-connector-$1.service
-     echo "alias awtrixconnect3-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
+     echo "alias awtrix3connect-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
      echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 fi
