@@ -49,11 +49,11 @@ angelegt sein und auch der dazugehörige Dienst wurde schon mit erstellt (aber n
 
 ### Konfiguration/Einstellungen
 
-Alle Einstellungen zum Programm wurden in eine eigene "settings.ini" Datei ausgelagert und sollten am besten mit
+Alle Einstellungen zum Programm wurden in eine eigene "config.ini" Datei ausgelagert und sollten am besten mit
 
-`mcedit /home/"Username"/scripts/AWTRIX3-Connector/settings.ini`
+`mcedit /home/"Username"/scripts/AWTRIX3-Connector/config.ini`
 
-bearbeitet werden! Ihr findet in der "settings.ini" entsprechende erklärende Kommentare zu den einzelnen Parametern!
+bearbeitet werden! Ihr findet in der "config.ini" entsprechende erklärende Kommentare zu den einzelnen Parametern!
 
 
 
