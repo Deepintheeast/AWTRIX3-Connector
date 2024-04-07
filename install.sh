@@ -45,7 +45,7 @@ fi
 
 cd /home/pi/temp_awtrix3
 
-git clone https://github.com/Deepintheeast/AWTRIX3-Connector
+git clone https://github.com/Deepintheeast/AWTRIX3-Connector.git
 
 if [  $# -eq 0 ]; then
     echo 'Instanz 0 erstellen!'
