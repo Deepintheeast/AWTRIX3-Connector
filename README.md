@@ -26,11 +26,11 @@ Version 0.1.0
 
 Um die Installation möglichst einfach zu gestalten gibt es ein Installationsscript welches alle erforderlichen Aktionen vornimmt!
 
-Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Installation"(zB.Solaranzeige) anmelden!
+Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Installation" (zB. Solaranzeige) anmelden!
 
 Als erstes müssen wir das Script runterladen:
 
-`wget https://raw.githubusercontent.com/Deepintheeast/Ulanzi-Solaranzeige-Connector/main/install.sh`
+`wget https://github.com/Deepintheeast/AWTRIX3-Connector/main/install.sh`
 
 jetzt einfach das Script aufrufen und durchlaufen lassen:
 
