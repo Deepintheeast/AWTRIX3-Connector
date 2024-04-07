@@ -30,7 +30,7 @@ if [ ! -d '/home/pi/temp_awtrix3' ]; then
     sudo apt install python3-ephem
     sudo apt install python3-schedule
     sudo apt install python3-influxdb
-    sudo apt install python3-mysql-connector
+    sudo apt install python3-mysqldb
     sudo apt install python3-psycopg2-binary
 
     
