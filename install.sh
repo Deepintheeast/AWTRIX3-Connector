@@ -15,32 +15,32 @@ if [ ! -d '/home/pi/temp_awtrix3' ]; then
   if [ "$version" = "11" ]; then
     echo "Debian 11 erkannt. Führe Installationen für Debian 11 aus..."
     sudo apt install pip
-    pip3 install requests
-    pip3 install ephem
-    pip3 install schedule
-    pip3 install influxdb
-    #pip3 install mysql-binary
-    pip3 install mysql-connector-python
-    pip3 install psycopg2-binary
 
   elif [ "$version" = "12" ]; then
     echo "Debian 12 erkannt. Führe Installationen für Debian 12 aus..."
     sudo apt install python3-pip
-    sudo apt install python3-request
-    sudo apt install python3-ephem
-    sudo apt install python3-schedule
-    sudo apt install python3-influxdb
-    sudo apt install python3-mysqldb
-    sudo apt install python3-postgresql
-
     
   else
     echo "Unbekannte Debian-Version. Beende Skript."
     exit 1
   fi
 
+# lokales Environment für User pi anlegen und aktivieren
+  python -m venv ~/.env  
+  source ~/.env/bin/activate
+  
+  pip3 install requests
+  pip3 install ephem
+  pip3 install schedule
+  pip3 install influxdb
+  #pip3 install mysql-binary
+  pip3 install mysql-connector-python
+  pip3 install psycopg2-binary
+  
+
   mkdir -p /home/pi/temp_awtrix3
   mkdir -p /home/pi/scripts
+  
 fi
 
 cd /home/pi/temp_awtrix3
