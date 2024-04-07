@@ -14,8 +14,8 @@ if [ ! -d '/home/pi/temp_awtrix3' ]; then
 
   if [ "$version" = "11" ]; then
     echo "Debian 11 erkannt. Führe Installationen für Debian 11 aus..."
-    sudo apt install pip3
-    pip3 install request
+    sudo apt install pip
+    pip3 install requests
     pip3 install ephem
     pip3 install schedule
     pip3 install influxdb
