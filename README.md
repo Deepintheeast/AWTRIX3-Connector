@@ -35,7 +35,9 @@ wget https://raw.githubusercontent.com/Deepintheeast/AWTRIX3-Connector/main/inst
 ```
 jetzt einfach das Script aufrufen und durchlaufen lassen:
 
-`bash ./install.sh`
+```
+bash ./install.sh
+```
 
 Tja, eigentlich war es das schon! 
 
@@ -57,14 +59,19 @@ bearbeitet werden! Ihr findet in der "settings.ini" entsprechende erklärende Ko
 
 Bevor ihr das Programm zum ersten mal startet bitte den User einmal ab und wieder anmelden! Bei der Installation wurde in der .bashrc ein "alias" angelegt und sollte jetzt auch aktiv sein. Dadurch könnte ihr jetzt durch Aufruf von
 
-`awtrix3connect` das Programm zum "testen" starten.
+```
+awtrix3connect
+```
+das Programm zum "testen" starten.
 
 Beenden mit Strg+C!
 
 
 Wenn alle Einstellungen richtig vorgenommen sind und alles soweit passt dann erst als Dienst starten !
 
-`sudo systemctl start awtrix3-connector.service`
+```
+sudo systemctl start awtrix3-connector.service
+```
 
 
 
