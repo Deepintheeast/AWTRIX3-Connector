@@ -30,7 +30,7 @@ Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Ins
 
 Als erstes müssen wir das Script runterladen:
 
-`wget https://github.com/Deepintheeast/AWTRIX3-Connector/main/install.sh`
+`wget https://raw.githubusercontent.com/Deepintheeast/AWTRIX3-Connector/main/install.sh`
 
 jetzt einfach das Script aufrufen und durchlaufen lassen:
 
