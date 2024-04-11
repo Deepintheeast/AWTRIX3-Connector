@@ -19,7 +19,19 @@ zur Darstellung bzw. Steuerung zur Verfügung.
 Die Anzeige der Daten erfolgt in Form von Text, Symbolen und Grafiken und kann in Abhängigkeit
 von der Tageszeit und anderen Parametern (Astro etc.) gesteuert werden.
 
-Version 0.1.0
+Version 0.1.0  (07.04.2024)
+
+- Erstveröffentlichung
+
+Version 0.1.1  (11.04.2024)
+
+- Fehler Start/Stopzeit wenn Stop in nächstem Tag behoben
+- Auswertung in eigene Module/Dateien (je App) ausgelagert, Templates speziell für
+  "Solaranzeige" befinden sich im Ordner "Auswertungen/Templates". Templates entsprechend
+  anpassen und zum "aktivieren" in den Ordner "Auswertungen" kopieren. Alle Templates im 
+  Ordner "Auswertungen" werden automatisch bei Programmstart geladen.
+- Fehler bei der Berechnung der Mondphase behoben
+- diverse "kosmetische" Anpassungen
 
 
 ### Installation
