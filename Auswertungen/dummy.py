@@ -15,8 +15,8 @@ def auswertung(app, data, config):
             "Have Fun! ( um dieses Dummy zu deaktivieren, einfach 'dummy.py' aus dem "
             "Ordner Auswertungen entfernen/löschen und/oder in der 'config.ini' deaktivieren! ) "
         ),
-        "icon": "HILFE",
-        "pushIcon": 2,
+        #"icon": "HILFE",
+        #"pushIcon": 2,
         "rainbow": bool(1),
     }
     awtrix3_send_app(
