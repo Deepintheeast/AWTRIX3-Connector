@@ -1,7 +1,4 @@
-"""Klassen und Funktionen für die Anbindung an die Datenbanken und das Senden an AWTRIX3
-
-Version 0.1.0
-"""
+"""Klassen und Funktionen für die Anbindung an die Datenbanken und das Senden an AWTRIX3"""
 
 import configparser
 import threading
@@ -21,7 +18,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 
 # diverse Werte setzen
-version_nr = "0.1.0"
+version_nr = "0.1.1"
 
 # globale Variable
 run_true = Value("b", False)
@@ -175,22 +172,28 @@ def get_mondphase():
     """Funktion Abfrage Mondphase"""
     # Erstellen Sie ein 'observer'-Objekt und setzen Sie das Datum auf heute
     observer = ephem.Observer()
+    observer.lat = str(config.getfloat("astro", "standort_breite"))
+    observer.lon = str(config.getfloat("astro", "standort_laenge"))
     observer.date = ephem.now()
+    #print(ephem.now())
+
     # Erstellen Sie ein 'moon'-Objekt
     moon = ephem.Moon()
     # Setzen Sie das 'moon'-Objekt auf die aktuelle Position des Mondes
     moon.compute(observer)
     # Die Mondphase ist ein Wert zwischen 0 und 1, wobei 0 Neumond und 0.5 Vollmond ist
-    mondphase = moon.phase
     # Umwandlung der numerischen Mondphase in eine Beschreibung
-    if mondphase < 0.02:
+    if moon.moon_phase < 0.02:
         status = "Neumond"
-    elif mondphase < 0.5:
-        status = "Mond zunehmend"
-    elif mondphase < 0.52:
+    elif moon.moon_phase < 0.5:
+        status = "Zunehmend"
+    elif moon.moon_phase < 0.52:
         status = "Vollmond"
     else:
-        status = "Mond abnehmend"
+        status = "Abnehmend"
+
+    print('Mondphase: ', moon.moon_phase)
+    print('Moon phase: ', status)
     return status
 
 
@@ -216,7 +219,10 @@ def ist_on_off_time(start_time, stop_time):
     stop = datetime.strptime(stop_time, "%H:%M").time()
 
     # Überprüfen, ob die aktuelle Zeit zwischen Start und Stopp liegt
-    return start <= now <= stop
+    if start <= stop:
+        return start <= now <= stop
+    else:  # Wenn die Stoppzeit in den nächsten Tag fällt
+        return start <= now or now <= stop
 
 
 class Scheduler:
@@ -393,10 +399,7 @@ def awtrix3_send_app(
         app_data.pop("repeat")
     if "text" in app_data:
         total_characters = sum(len(item) for item in app_data["text"])
-        #print("\n")
-        #print(total_characters)
-        total_char_t = sum(len(item["t"]) for item in app_data["text"] if "t" in item)
-        #print(total_char_t)
+        total_char_t = sum(len(item["t"]) for item in app_data["text"] if isinstance(item, dict) and "t" in item)
         if total_char_t > 6 or total_characters > 6:
             app_data["repeat"] = app_scroll_duration
         else:
@@ -565,11 +568,12 @@ def get_tasmota(ip, gruppe, wert, user, passwort):
     """
     Holt Daten von einem Tasmota-Gerät.
 
-    ip: Die IP-Adresse des Tasmota-Geräts.
-    gruppe: Die Gruppe der abzurufenden Daten.
-    wert: Der spezifische Wert, der abgerufen werden soll.
-    user: Der Benutzername für die Authentifizierung.
-    passwort: Das Passwort für die Authentifizierung.
+    :param ip: Die IP-Adresse des Tasmota-Geräts.
+    :param gruppe: Die Gruppe der abzurufenden Daten.
+    :param wert: Der spezifische Wert, der abgerufen werden soll.
+    :param user: Der Benutzername für die Authentifizierung.
+    :param passwort: Das Passwort für die Authentifizierung.
+    :return: Der abgerufene Wert oder "n/a", wenn ein Fehler auftritt.
     """
     url = f"http://{ip}/cm?cmnd=status%200"
     try:
@@ -595,6 +599,6 @@ def intro():
         "text": " AWTRIX 3 Connector -> Version " + str(version_nr),
         "rainbow": bool(1),
         "rtttl": "s:d=4,o=6,b=185:c,p,c,p,c",
-        "repeat": int(2),
+        "repeat": int(1),
     }
     awtrix3_send_notifikation(config["awtrix3"]["url"], notifi_data)
