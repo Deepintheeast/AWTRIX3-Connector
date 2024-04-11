@@ -192,8 +192,8 @@ def get_mondphase():
     else:
         status = "Abnehmend"
 
-    print('Mondphase: ', moon.moon_phase)
-    print('Moon phase: ', status)
+    #print('Mondphase: ', moon.moon_phase)
+    #print('Moon phase: ', status)
     return status
 
 
