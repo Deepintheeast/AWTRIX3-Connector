@@ -37,7 +37,7 @@ Version 0.1.1  (11.04.2024)
 
 ### Installation
 
-Um die Installation möglichst einfach zu gestalten gibt es ein Installationsscript welches alle erforderlichen Aktionen vornimmt!
+Um die Installation möglichst einfach zu gestalten gibt es ein Installationsscript (lauffähig auf Debian basierenden Distributionen) welches alle erforderlichen Aktionen vornimmt!
 
 Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Installation" (zB. Solaranzeige) anmelden!
 
