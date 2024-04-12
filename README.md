@@ -85,6 +85,12 @@ Wenn alle Einstellungen richtig vorgenommen sind und alles soweit passt dann ers
 ```
 sudo systemctl start awtrix3-connector.service
 ```
+Weitere wichtige Befehle zum Handling des Dienstes sind anstelle von "start" -> "stop" , "restart" oder "status", und sollten selbsterklärend sein!
+Wenn ein Dienst läuft und Änderungen durchgeführt wurden muss dieser zur Übernahme der Änderungen "neu gestartet werden!" 
+```
+sudo systemctl restart awtrix3-connector
+```
+
 
 
 
