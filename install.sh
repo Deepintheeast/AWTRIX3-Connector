@@ -8,6 +8,8 @@ version=$(lsb_release -rs)
 
 sudo apt install git
 
+cd /home/$username
+
 if [ ! -d '/home/$username/temp_awtrix3' ]; then
   echo $1
   echo $#
