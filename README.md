@@ -37,7 +37,7 @@ Version 0.1.1  (11.04.2024)
 
 ### Installation
 
-Um die Installation möglichst einfach zu gestalten gibt es ein Bash-Installationsscript (lauffähig auf Debian basierenden Distributionen) welches alle erforderlichen Aktionen vornimmt! Da es sich um ein reines "Python-Script" handelt sollte es auch problemlos auf anderen Plattformen bis hin zu Windows Installationen mit entsprechend vorhandener "Python-Basis" funktionieren. Bei mir läuft es stabil auf diversen "Raspberry's" sowie auf einem Debian 12 basierenden Container unter Proxmox.
+Um die Installation möglichst einfach zu gestalten gibt es ein Bash-Installationsscript (lauffähig auf Debian basierenden Distributionen) welches alle erforderlichen Aktionen vornimmt! Da es sich um ein reines "Python-Script" handelt sollte es auch problemlos auf anderen Plattformen bis hin zu Windows Installationen mit entsprechend vorhandener "Python-Basis" funktionieren. Bei mir läuft es stabil unter Debian auf diversen "Raspberry's" sowie auf einem Debian 12 basierenden Container unter Proxmox.
 
 Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Installation" (zB. Solaranzeige) anmelden!
 
