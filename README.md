@@ -33,6 +33,13 @@ Version 0.1.1  (11.04.2024)
   Ordner "Auswertungen" werden automatisch bei Programmstart geladen.
 - Fehler bei der Berechnung der Mondphase behoben
 - diverse "kosmetische" Anpassungen
+
+13.04.2024
+- Tool "showdb" hinzugefügt.
+Solaranzeige User können sich durch Aufruf von
+`showdb "Datenbankname"`
+alle letzten Einträge der Datenbank anzeigen lassen. Das hilft die "richtigen Datenbanknamen"
+zu finden und das ganze auf Plausibilität zu checken.
 ```
 
 ### Installation
