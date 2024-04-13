@@ -7,7 +7,7 @@ from funktionen import awtrix3_send_app
 def auswertung(app, data, config):
     # Auswertung Template für einen einzelnen Wert
     data_app = {
-        "text": str(int(data["WERT"])) + " %",
+        "text": str(int(data["WERT"])) + " Irgendwas oder löschen! ",
         "icon": ICON,
         "color": "#00ff00",
     }
