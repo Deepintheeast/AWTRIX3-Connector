@@ -44,7 +44,7 @@ zu finden und das ganze auf Plausibilität zu checken.
 19.04.2024
 
 Es gibt leider immer noch ein Fehler in der Mondphasenberechnung!
-Fix folgt demnächst, möchte das gern noch ein bisschen testen!
+Fix folgt demnächst, möchte das gern erst noch ein bisschen testen!
 ```
 
 ### Installation
