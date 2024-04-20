@@ -5,6 +5,10 @@ AWTRIX3-Connector ->
 Das Script dient als universelle Schnittstelle für die Darstellung von Informationen aus diversen 
 Datenquellen auf Geräten mit der AWTRIX3-Firmware minimum Version 0.96.
 
+Link -> [Projektseite AWTRIX3](https://blueforcer.github.io/awtrix3/#/)
+
+Link -> [Onlineflasher](https://blueforcer.github.io/awtrix3/#/flasher)
+
 Aktuell können "Daten aus InfluxDB, SQLite, MariaDB, PostgreSQL und von Tasmota-Geräten" 
 abgerufen und auf der AWTRIX3-Plattform dargestellt werden. 
 Die Daten können sowohl einzeln aus einer Datenquelle oder auch kombiniert von verschiedenen
