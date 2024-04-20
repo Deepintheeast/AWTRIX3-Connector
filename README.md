@@ -47,6 +47,9 @@ Es gibt leider immer noch ein Fehler in der Mondphasenberechnung!
 Fix folgt demnächst, möchte das gern erst noch ein bisschen testen!
 ```
 
+---
+
+
 ### Installation
 
 Um die Installation möglichst einfach zu gestalten gibt es ein Bash-Installationsscript (lauffähig auf Debian basierenden Distributionen) welches alle erforderlichen Aktionen vornimmt! Da es sich um ein reines "Python-Script" handelt sollte es auch problemlos auf anderen Plattformen bis hin zu Windows Installationen mit entsprechend vorhandener "Python-Basis" funktionieren. Bei mir läuft es stabil unter Debian auf diversen "Raspberry's" sowie auf einem Debian 12 basierenden Container unter Proxmox.
@@ -72,6 +75,9 @@ Es sollten jetzt alle benötigten Programmdaten unter
 
 angelegt sein und auch der dazugehörige Dienst wurde schon mit erstellt (aber noch nicht gestartet)!
 
+---
+
+
 ### Konfiguration/Einstellungen
 
 Alle Einstellungen zum Programm wurden in eine eigene "config.ini" Datei ausgelagert und sollten am besten mit
@@ -91,6 +97,8 @@ das Programm zum "testen" starten.
 
 Beenden mit Strg+C!
 
+---
+
 
 ### Start und Handling als Dienst!
 
@@ -105,7 +113,7 @@ Wenn ein Dienst läuft und Änderungen durchgeführt wurden muss dieser zur Übe
 sudo systemctl restart awtrix3-connector
 ```
 
-
+---
 
 
 ## Installation 2. Instanz
