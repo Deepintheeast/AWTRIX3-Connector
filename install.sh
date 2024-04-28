@@ -8,8 +8,6 @@ version=$(lsb_release -rs)
 
 sudo apt install git
 
-cd /home/$username
-
 if [ ! -d '/home/$username/temp_awtrix3' ]; then
   echo $1
   echo $#
@@ -32,7 +30,7 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
 # lokales Environment für User anlegen und aktivieren
   python -m venv ~/.env  
   source ~/.env/bin/activate
-  
+
   pip3 install requests
   pip3 install ephem
   pip3 install schedule
@@ -56,10 +54,10 @@ if [  $# -eq 0 ]; then
     chmod 755 /home/$username/scripts/AWTRIX3-Connector/awtrix3connect.py
     sudo cp /home/$username/scripts/AWTRIX3-Connector/awtrix3-connector.service /etc/systemd/system/awtrix3-connector.service
     sudo chmod 644 /etc/systemd/system/awtrix3-connector.service
+    sudo sed -i "s|USERNAME|$username|g" /etc/systemd/system/awtrix3-connector.service
     sudo systemctl daemon-reload
     sudo systemctl enable awtrix3-connector.service
-    echo "alias showdb='cd /home/$username/scripts/AWTRIX3-Connector/Tools && /home/$username/.env/bin/python3 ./showdb.py'" >> /home/$username/.bashrc
-    echo "alias awtrix3connect='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
+    echo "alias awtrixconnect3='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
     echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 else
@@ -72,9 +70,10 @@ else
 
      sudo cp /home/$username/scripts/AWTRIX3-Connector-$1/awtrix3-connector-$1.service /etc/systemd/system/awtrix3-connector-$1.service
      sudo chmod 644 /etc/systemd/system/awtrix3-connector-$1.service
+     sudo sed -i "s|USERNAME|$username|g" /etc/systemd/system/awtrix3-connector-$1.service
      sudo systemctl daemon-reload
      sudo systemctl enable awtrix3-connector-$1.service
-     echo "alias awtrix3connect-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
+     echo "alias awtrixconnect3-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
      echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 fi
