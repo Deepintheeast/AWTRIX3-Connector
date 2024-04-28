@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Installationsscript für 'AWTRIX3-Connector' ab Version 0.1
 
 # Username des Benutzers
