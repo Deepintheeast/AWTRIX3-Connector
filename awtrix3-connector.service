@@ -6,7 +6,7 @@ After=multi-user.target
 WorkingDirectory=/home/USERNAME/scripts/AWTRIX3-Connector
 Type=idle
 User=pi
-ExecStart=/home/pi/.env/USERNAME/python3 awtrix3connect.py /dev/null 2>&1
+ExecStart=/home/USERNAME/.env/bin/python3 awtrix3connect.py /dev/null 2>&1
 Restart=always
 RestartSec=5
 
