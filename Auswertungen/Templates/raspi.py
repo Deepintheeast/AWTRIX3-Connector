@@ -1,4 +1,6 @@
 """ Anzeige Zustand (Temperatur und freier Speicher) Raspi """
+# Um auf die benötigten Daten zugreifen zu können bitte
+# Seite 7 von https://solaranzeige.de/phpBB3/download/EigeneErweiterungen.pdf beachten
 
 # Importieren der benötigten Funktionen aus der Funktionen-Bibliothek
 from funktionen import (
