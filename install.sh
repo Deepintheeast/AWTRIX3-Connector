@@ -17,6 +17,7 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
   if [ "$version" = "11" ]; then
     echo "Debian 11 erkannt. Führe Installationen für Debian 11 aus..."
     sudo apt install pip
+    sudo apt-get install python3-venv
 
   elif [ "$version" = "12" ]; then
     echo "Debian 12 erkannt. Führe Installationen für Debian 12 aus..."
