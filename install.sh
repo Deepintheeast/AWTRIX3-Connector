@@ -57,6 +57,7 @@ if [  $# -eq 0 ]; then
     sudo sed -i "s|USERNAME|$username|g" /etc/systemd/system/awtrix3-connector.service
     sudo systemctl daemon-reload
     sudo systemctl enable awtrix3-connector.service
+    echo "alias showdb='cd /home/$username/scripts/AWTRIX3-Connector/Tools && /home/$username/.env/bin/python3 ./showdb.py'" >> /home/$username/.bashrc
     echo "alias awtrixconnect3='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
     echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
