@@ -96,10 +96,13 @@ else
       echo "alias awtrixconnect3-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
      fi
      echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
-     echo 'Um die angelegten "Aliase" nutzen zu können muss der der User: $username ab- und neu angemeldet werden!'
 
 fi
 
-echo 'Installation beendet ! Have Fun !'
+echo ''
+echo 'Um die angelegten "Aliase" nutzen zu können, muss der Benutzer: '$username' ab- und neu angemeldet werden!'
+echo ''
+echo 'Installation beendet! Viel Spaß!'
+
 rm -rf /home/$username/temp_awtrix3/
 rm -f /home/$username/install.sh
