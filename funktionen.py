@@ -18,7 +18,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 
 # diverse Werte setzen
-version_nr = "0.1.1"
+version_nr = "0.1.2"
 
 # globale Variable
 run_true = Value("b", False)
@@ -64,8 +64,10 @@ def query_database(d_app, d_group, d_config):
         elif flag == "influxdb":
             info = (info + ['', ''] * 3)[:6]
             ip, db, measurement, field, username, password = info
+            ip_port = ip
+            ip_db, port_db = ip_port.split(":")
             # Erstellen Sie eine Verbindung zum InfluxDB-Server
-            client = InfluxDBClient(host=ip, port=8086, username = username, password = password)
+            client = InfluxDBClient(host=ip_db, port=port_db, username = username, password = password)
             # Wechsel zur aktuellen Datenbank
             client.switch_database(db)
             # Erstellen der Abfrage
@@ -169,31 +171,36 @@ def get_sa_su(breite, laenge, sa_korrektur=0, su_korrektur=0):
 
 
 def get_mondphase():
-    """Funktion Abfrage Mondphase"""
-    # Erstellen Sie ein 'observer'-Objekt und setzen Sie das Datum auf heute
+    """ Funktion zur Ermittlung des aktuellen Mondzustandes """
+    status = ""
+    # Erstellen Sie ein ephem.Observer-Objekt für den aktuellen Standort
     observer = ephem.Observer()
     observer.lat = str(config.getfloat("astro", "standort_breite"))
     observer.lon = str(config.getfloat("astro", "standort_laenge"))
-    observer.date = ephem.now()
-    #print(ephem.now())
 
-    # Erstellen Sie ein 'moon'-Objekt
-    moon = ephem.Moon()
-    # Setzen Sie das 'moon'-Objekt auf die aktuelle Position des Mondes
-    moon.compute(observer)
-    # Die Mondphase ist ein Wert zwischen 0 und 1, wobei 0 Neumond und 0.5 Vollmond ist
-    # Umwandlung der numerischen Mondphase in eine Beschreibung
-    if moon.moon_phase < 0.02:
+ # Setzen Sie das Datum des Beobachters auf das aktuelle Datum in UTC
+    observer.date = datetime.utcnow()
+    debug_print("Aktuelles Datum: " + str(observer.date.datetime().date()))
+
+    # Berechnen Sie das Datum des nächsten Vollmondes
+    next_full_moon = ephem.next_full_moon(observer.date).datetime().date()
+    debug_print("Nächster Vollmond: " + str(next_full_moon))
+
+    # Berechnen Sie das Datum des nächsten Neumondes
+    next_new_moon = ephem.next_new_moon(observer.date).datetime().date()
+    debug_print("Nächster Neumond: " + str(next_new_moon))
+
+    # Bestimmen Sie den Zustand des Mondes basierend auf dem Datum des nächsten Vollmondes und Neumondes
+    if observer.date.datetime().date() == next_new_moon:
         status = "Neumond"
-    elif moon.moon_phase < 0.5:
-        status = "Zunehmend"
-    elif moon.moon_phase < 0.52:
+    elif observer.date.datetime().date() == next_full_moon:
         status = "Vollmond"
+    elif observer.date.datetime().date() < next_full_moon < next_new_moon:
+        status = "Zunehmend"
     else:
         status = "Abnehmend"
-
-    #print('Mondphase: ', moon.moon_phase)
-    #print('Moon phase: ', status)
+    # Geben Sie den Zustand des Mondes aus
+    debug_print("Der aktuelle Zustand des Mondes ist: " + status)
     return status
 
 
@@ -368,6 +375,12 @@ def awtrix3_send_settings(url, settings_data):
     """Funktion 'Settings' an AWTRIX3 senden"""
     settings_url = url + "/api/settings"
     awtrix3_send_request(settings_url, settings_data)
+
+
+def awtrix3_send_reorder(url, request_data):    
+    """Funktion 'Reorder' an AWTRIX3 senden"""
+    awtrix3_url = url + "/api/reorder"
+    awtrix3_send_request(awtrix3_url, request_data) 
 
 
 def awtrix3_effekt_set(url, trans_effect, trans_effect_time):
@@ -582,6 +595,9 @@ def get_tasmota(ip, gruppe, wert, user, passwort):
         if gruppe == 'ENERGY':
             return data['StatusSNS'][gruppe][wert]
         elif gruppe.startswith('DS18B20'):
+            print(data['StatusSNS'][gruppe][wert])
+            return data['StatusSNS'][gruppe][wert]
+        elif gruppe.startswith('BH1750'):
             return data['StatusSNS'][gruppe][wert]
         else:
             return data[gruppe][wert]
@@ -598,7 +614,7 @@ def intro():
     notifi_data = {
         "text": " AWTRIX 3 Connector -> Version " + str(version_nr),
         "rainbow": bool(1),
-        "rtttl": "s:d=4,o=6,b=185:c,p,c,p,c",
+        #"rtttl": "s:d=4,o=6,b=185:c,p,c,p,c",
         "repeat": int(1),
     }
     awtrix3_send_notifikation(config["awtrix3"]["url"], notifi_data)
