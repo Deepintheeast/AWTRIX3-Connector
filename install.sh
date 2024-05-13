@@ -70,8 +70,6 @@ if [  $# -eq 0 ]; then
     if ! grep -q "alias awtrixconnect3=" /home/$username/.bashrc; then
       echo "alias awtrixconnect3='cd /home/$username/scripts/AWTRIX3-Connector && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
     fi
-    
-    echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 else
      echo 'Instanz '$1' erstellen!'
@@ -95,14 +93,16 @@ else
      if ! grep -q "alias awtrixconnect3-$1=" /home/$username/.bashrc; then
       echo "alias awtrixconnect3-$1='cd /home/$username/scripts/AWTRIX3-Connector-$1 && /home/$username/.env/bin/python3 ./awtrix3connect.py'" >> /home/$username/.bashrc
      fi
-     echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 
 fi
 
 echo ''
+echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
+echo ''
 echo 'Um die angelegten "Aliase" nutzen zu können, muss der Benutzer: '$username' ab- und neu angemeldet werden!'
 echo ''
 echo 'Installation beendet! Viel Spaß!'
+echo ''
 
 rm -rf /home/$username/temp_awtrix3/
 rm -f /home/$username/install.sh
