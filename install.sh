@@ -39,7 +39,6 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
   pip3 install mysql-connector-python
   pip3 install psycopg2-binary
   
-
   mkdir -p /home/$username/temp_awtrix3
   mkdir -p /home/$username/scripts
   
@@ -51,9 +50,9 @@ git clone https://github.com/Deepintheeast/AWTRIX3-Connector.git
 
 if [  $# -eq 0 ]; then
     echo 'Instanz 0 erstellen!'
-    
+
     if [ -d "/home/$username/scripts/AWTRIX3-Connector" ]; then
-     mv /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector_old
+     mv /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector.old
     fi
 
     mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector
@@ -76,6 +75,11 @@ if [  $# -eq 0 ]; then
 
 else
      echo 'Instanz '$1' erstellen!'
+
+      if [ -d "/home/$username/scripts/AWTRIX3-Connector-$1" ]; then
+       mv /home/$username/scripts/AWTRIX3-Connector-$1 /home/$username/scripts/AWTRIX3-Connector-$1.old
+      fi
+
      mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector-$1
      cd /home/$username/scripts/AWTRIX3-Connector-$1
      chmod 755 /home/$username/scripts/AWTRIX3-Connector-$1/awtrix3connect.py
