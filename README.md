@@ -49,6 +49,14 @@ zu finden und das ganze auf Plausibilität zu checken.
 
 Es gibt leider immer noch ein Fehler in der Mondphasenberechnung!
 Fix folgt demnächst, möchte das gern erst noch ein bisschen testen!
+
+Version 0.1.2  (13.05.2024)
+
+- Pausenzeit zwischen den Apps jetzt in config.ini einstellbar
+- Anzeige der Uhr (Time) wahlweise 1x im Loop oder nach jeder App möglich
+- InfluxDB Portangabe in config.ini nötig/möglich
+- Mondphasenberechnung gefixt
+
 ```
 
 ---
