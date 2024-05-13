@@ -52,7 +52,7 @@ if [  $# -eq 0 ]; then
     echo 'Instanz 0 erstellen!'
 
     if [ -d "/home/$username/scripts/AWTRIX3-Connector" ]; then
-     mv /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector.old
+     mv -f /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector.old
     fi
 
     mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector
@@ -75,7 +75,7 @@ else
      echo 'Instanz '$1' erstellen!'
 
       if [ -d "/home/$username/scripts/AWTRIX3-Connector-$1" ]; then
-       mv /home/$username/scripts/AWTRIX3-Connector-$1 /home/$username/scripts/AWTRIX3-Connector-$1.old
+       mv -f /home/$username/scripts/AWTRIX3-Connector-$1 /home/$username/scripts/AWTRIX3-Connector-$1.old
       fi
 
      mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector-$1
