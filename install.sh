@@ -1,6 +1,10 @@
 #!/bin/bash
 # Installationsscript für 'AWTRIX3-Connector' ab Version 0.1.2
 
+timestamp() {
+  date +"%T" # current time
+}
+
 # Username des Benutzers
 username=$(whoami)
 # Abfrage der Debian-Version
@@ -52,7 +56,7 @@ if [  $# -eq 0 ]; then
     echo 'Instanz 0 erstellen!'
 
     if [ -d "/home/$username/scripts/AWTRIX3-Connector" ]; then
-     mv -f /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector.old
+     mv -f /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector-$timestamp.old
     fi
 
     mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector
@@ -75,7 +79,7 @@ else
      echo 'Instanz '$1' erstellen!'
 
       if [ -d "/home/$username/scripts/AWTRIX3-Connector-$1" ]; then
-       mv -f /home/$username/scripts/AWTRIX3-Connector-$1 /home/$username/scripts/AWTRIX3-Connector-$1.old
+       mv -f /home/$username/scripts/AWTRIX3-Connector-$1 /home/$username/scripts/AWTRIX3-Connector-$1-$timestamp.old
       fi
 
      mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector-$1
