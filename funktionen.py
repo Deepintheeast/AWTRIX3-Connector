@@ -614,7 +614,7 @@ def intro():
     notifi_data = {
         "text": " AWTRIX 3 Connector -> Version " + str(version_nr),
         "rainbow": bool(1),
-        #"rtttl": "s:d=4,o=6,b=185:c,p,c,p,c",
+        "rtttl": "s:d=4,o=6,b=185:c,p,c,p,c",
         "repeat": int(1),
     }
     awtrix3_send_notifikation(config["awtrix3"]["url"], notifi_data)
