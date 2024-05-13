@@ -1,9 +1,7 @@
 #!/bin/bash
 # Installationsscript für 'AWTRIX3-Connector' ab Version 0.1.2
 
-timestamp() {
-  date +"%T" # current time
-}
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Username des Benutzers
 username=$(whoami)
