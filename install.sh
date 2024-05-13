@@ -51,6 +51,11 @@ git clone https://github.com/Deepintheeast/AWTRIX3-Connector.git
 
 if [  $# -eq 0 ]; then
     echo 'Instanz 0 erstellen!'
+    
+    if [ -d "/home/$username/scripts/AWTRIX3-Connector" ]; then
+     mv /home/$username/scripts/AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector_old
+    fi
+
     mv AWTRIX3-Connector /home/$username/scripts/AWTRIX3-Connector
     chmod 755 /home/$username/scripts/AWTRIX3-Connector/awtrix3connect.py
     sudo cp /home/$username/scripts/AWTRIX3-Connector/awtrix3-connector.service /etc/systemd/system/awtrix3-connector.service
