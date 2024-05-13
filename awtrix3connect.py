@@ -21,7 +21,7 @@ Version 0.1.0  (07.04.2024)
 
 - Erstveröffentlichung
 
-Version 0.1.1  (09.04.2024)
+Version 0.1.1  (11.04.2024)
 
 - Fehler Start/Stopzeit wenn Stop in nächstem Tag behoben
 - Auswertung in eigene Module/Dateien (je App) ausgelagert, Templates speziell für
@@ -30,6 +30,13 @@ Version 0.1.1  (09.04.2024)
   Ordner "Auswertungen" werden automatisch bei Programmstart geladen.
 - Fehler bei der Berechnung der Mondphase behoben
 - diverse "kosmetische" Anpassungen
+
+Version 0.1.2  (13.05.2024)
+
+- Pausenzeit zwischen den Apps in config.ini einstellbar
+- Anzeige der Uhr (Time) wahlweise 1x im Loop oder nach jeder App möglich
+- InfluxDB Portangabe in config.ini nötig/möglich
+- Mondphasenberechnung gefixt
 
 """
 import configparser
@@ -40,6 +47,7 @@ from auswertung import auswertung
 from funktionen import (
     awtrix3_init,
     awtrix3_hell_set,
+    awtrix3_send_reorder,
     awtrix3_an_aus,
     query_database,
     Scheduler,
@@ -123,13 +131,25 @@ def main():
     # Loop starten
 
     x = True # Hilfsvariablen setzen
-
+    count = 0
     while True:
 
         if run_true.value:
             print("! run_true ist:", run_true.value, "Loop startet...\n")
 
-            for app in config["apps"]:
+            # Initialisieren Sie eine leere Liste für die App-Namen und eine Zählvariable
+            app_names = []
+            
+
+            for i, app in enumerate(config["apps"]):
+                # den Namen der aktuellen App zur Liste hinzufügen
+                app_names.append(app)
+
+                # Wenn das letzte Element in app_names nicht "indikator" ist, "Time" hinzufügen
+                # Indikator soll nicht als App betrachtet werden da es "quasi" permanent angezeigt wird
+                if app_names[-1] != "indikator":
+                    app_names.append("Time")
+
                 # Holen der Gruppe von Abfragen für aktuelle app
                 group = config["apps"][app]
 
@@ -153,9 +173,24 @@ def main():
 
                 x = True  # "x" zurücksetzen
 
-                time.sleep(6) # "x" Sekunden Pause vor dem nächsten Durchlauf
+                # Pause zwischen den Apps
+                time.sleep(config.getint("settings", "pause_zwischen_apps"))
                 print("\n\n")
+
+            # Erhöhen Sie die Zählvariable
+            count += 1
+            debug_print(count)
+
+            # Wenn count 1 oder ein Vielfaches von 25 ist und show_time auf 1 gesetzt ist
+            # -> Zeit nach jeder App anzeigen
+            if (count == 1 or count % 25 == 0) and config.getboolean('settings','show_time') == 1:
+                debug_print(f"App-Namen: " + str(app_names)+"\n")
+                # Reihenfolge der Apps an AWTRIX3 senden
+                awtrix3_send_reorder(config["awtrix3"]["url"], app_names)
+                count = 1
+
         else:
+            count = 0
             if x and config.getboolean("settings", "night_show"):
                 print("Nightshow aktiviert.\n")
                 x = False
