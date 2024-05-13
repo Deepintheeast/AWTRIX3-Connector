@@ -100,3 +100,4 @@ else
 fi
 
 echo 'Installation beendet ! Have Fun !'
+rm -f /home/$username/install.sh
