@@ -8,6 +8,8 @@ username=$(whoami)
 # Abfrage der Debian-Version
 version=$(lsb_release -rs)
 
+cd /home/$username
+
 sudo apt install git
 
 if [ ! -d '/home/$username/temp_awtrix3' ]; then
@@ -31,7 +33,7 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
   fi
 
 # lokales Environment für User anlegen und aktivieren
-  python -m venv ~/.env  
+  /usr/bin/python -m venv ~/.env  
   source ~/.env/bin/activate
 
   pip3 install requests
