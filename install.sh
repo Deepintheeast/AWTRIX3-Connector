@@ -33,7 +33,7 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
   fi
 
 # lokales Environment für User anlegen und aktivieren
-  /usr/bin/python -m venv ~/.env  
+  python3 -m venv ~/.env  
   source ~/.env/bin/activate
 
   pip3 install requests
