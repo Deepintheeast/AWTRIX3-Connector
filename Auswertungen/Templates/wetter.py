@@ -14,12 +14,12 @@ luftdruck_tendenz = get_luftdruck_tendenz()
 
 def auswertung(app, data, config):
     """ Beginn der Auswertung für die Wetter-App """
-    luftdruck_tendenz.luftdruck_aktualisieren(str(data["wetter_Luftdruck"]))
+    luftdruck_tendenz.luftdruck_aktualisieren(str(data["wetter_solaranzeige_Luftdruck"]))
     # Ermitteln Tendenz Luftdruck
     tendenz = luftdruck_tendenz.ermitteln_tendenz()
     print("Tendenz Luftdruck: ", tendenz)
 
-    temp = data["wetter_Temperatur"]
+    temp = data["wetter_solaranzeige_Temperatur"]
     # Farbe in Abhängigkeit der Temperatur festlegen
     if temp <= -12:
         hex_color = '#D977DF'
@@ -50,13 +50,13 @@ def auswertung(app, data, config):
             {"t":" " + str(temp) + "°C", "c": hex_color},
             {"t": " + ", "c": "#ed7d3b"},
             {
-                "t": str(data["wetter_Himmel"])[0].lower()
-                + str(data["wetter_Himmel"])[1:],
+                "t": str(data["wetter_solaranzeige_Himmel"])[0].lower()
+                + str(data["wetter_solaranzeige_Himmel"])[1:],
                 "c": "#0033ff",
             },
             {"t": " + ", "c": "#ed7d3b"},
             # {"t": "Luftdruck ", "c": "#00DDDD"},
-            {"t": str(int(data["wetter_Luftdruck"])) + " hPa ", "c": "#00DDDD"},
+            {"t": str(int(data["wetter_solaranzeige_Luftdruck"])) + " hPa ", "c": "#00DDDD"},
             {"t": tendenz.lower(), "c": "#00DDDD"},
             {"t": " + ", "c": "#ed7d3b"},
             {"t": get_mondphase() , "c": "#f6e95f"},
@@ -68,18 +68,18 @@ def auswertung(app, data, config):
     # Overlay "clear, drizzle, rain, storm, snow, frost" setzen
     if config.getboolean("wetter", "overlay"):
         data_overlay = {}
-        if "Leichter Regen" in data["wetter_Himmel"]:
+        if "Leichter Regen" in data["wetter_solaranzeige_Himmel"]:
             data_overlay = {"overlay": "drizzle"}
-        elif "Mäßiger Regen" in data["wetter_Himmel"]:
+        elif "Mäßiger Regen" in data["wetter_solaranzeige_Himmel"]:
             data_overlay = {"overlay": "rain"}
-        elif "Starker Regen" in data["wetter_Himmel"]:
+        elif "Starker Regen" in data["wetter_solaranzeige_Himmel"]:
             data_overlay = {"overlay": "storm"}
-        elif "Schnee" in data["wetter_Himmel"]:
+        elif "Schnee" in data["wetter_solaranzeige_Himmel"]:
             data_overlay = {"overlay": "snow"}
         elif temp < 0:
             data_overlay = {"overlay": "frost"}
-        elif (temp > 0 and "Regen" not in str(data["wetter_Himmel"])
-            and "Schnee" not in str(data["wetter_Himmel"])):
+        elif (temp > 0 and "Regen" not in str(data["wetter_solaranzeige_Himmel"])
+            and "Schnee" not in str(data["wetter_solaranzeige_Himmel"])):
             data_overlay = {"overlay": "clear"}
         if  config.getboolean("wetter", "overlay_global"):
             data_overlay["OVERLAY"] = data_overlay["overlay"]
