@@ -9,6 +9,11 @@ Link -> [Projektseite AWTRIX3](https://blueforcer.github.io/awtrix3/#/)
 
 Link -> [Onlineflasher](https://blueforcer.github.io/awtrix3/#/flasher)
 
+Affiliate-Link -> [Ulanzi Pixel Clock](https://www.ulanzi.de/products/ulanzi-pixel-smart-uhr-2882?_pos=1&_psq=pixel&_ss=e&_v=1.0&ref=z6pvugfl)
+
+( bei einem Kauf der Uhr über diesen Link erhalte ich eine kleine Provision die mit zur Finanzierung dieses Projektes genutzt wird! Danke an alle die das so machen/gemacht haben!)
+
+
 Aktuell können "Daten aus InfluxDB, SQLite, MariaDB, PostgreSQL und von Tasmota-Geräten" 
 abgerufen und auf der AWTRIX3-Plattform dargestellt werden. 
 Die Daten können sowohl einzeln aus einer Datenquelle oder auch kombiniert von verschiedenen
