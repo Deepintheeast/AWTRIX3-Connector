@@ -18,7 +18,7 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 
 # diverse Werte setzen
-version_nr = "0.1.2"
+version_nr = "0.1.3"
 
 # globale Variable
 run_true = Value("b", False)
@@ -77,7 +77,8 @@ def query_database(d_app, d_group, d_config):
             # Ergebnis zum Daten-Dictionary hinzufügen
             for point in result.get_points():
                 # Bezeichner und Feld als Schlüssel im Dictionary
-                key = f"{d_app}_{field}"
+                #key = f"{d_app}_{field}"
+                key = f"{d_app}_{db}_{field}"
                 combined_data[key] = point["last"]
 
         elif flag == "sqlite":
@@ -95,7 +96,9 @@ def query_database(d_app, d_group, d_config):
             result = cursor.fetchone()
             if result is not None:
                 # Ergebnis zum Daten-Dictionary hinzufügen
-                key = f"{d_app}_{column}"
+                #key = f"{d_app}_{column}"
+                db_name = db_name.split('/')[-1].split('.')[0]
+                key = f"{d_app}_{db_name}_{column}"
                 combined_data[key] = result[0]
             # Schließen der Verbindung
             conn.close()
@@ -117,7 +120,7 @@ def query_database(d_app, d_group, d_config):
             result = cursor.fetchone()
             if result is not None:
                 # Ergebnis zum Daten-Dictionary hinzufügen
-                key = f"{d_app}_{column}"
+                key = f"{d_app}_{db_name}_{column}"
                 combined_data[key] = result[0]
             # Verbindung schließen
             conn.close()
@@ -139,7 +142,7 @@ def query_database(d_app, d_group, d_config):
             result = cursor.fetchone()
             if result is not None:
                 # Ergebnis zum Daten-Dictionary hinzufügen
-                key = f"{d_app}_{column}"
+                key = f"{d_app}_{db_name}_{column}"
                 combined_data[key] = result[0]
             # Verbindung schließen
             conn.close()
@@ -178,7 +181,7 @@ def get_mondphase():
     observer.lat = str(config.getfloat("astro", "standort_breite"))
     observer.lon = str(config.getfloat("astro", "standort_laenge"))
 
- # Setzen Sie das Datum des Beobachters auf das aktuelle Datum in UTC
+    # Setzen Sie das Datum des Beobachters auf das aktuelle Datum in UTC
     observer.date = datetime.utcnow()
     debug_print("Aktuelles Datum: " + str(observer.date.datetime().date()))
 
@@ -191,9 +194,9 @@ def get_mondphase():
     debug_print("Nächster Neumond: " + str(next_new_moon))
 
     # Bestimmen Sie den Zustand des Mondes basierend auf dem Datum des nächsten Vollmondes und Neumondes
-    if observer.date.datetime().date() == next_new_moon:
+    if next_new_moon - timedelta(days=1) <= observer.date.datetime().date() <= next_new_moon + timedelta(days=1):
         status = "Neumond"
-    elif observer.date.datetime().date() == next_full_moon:
+    elif next_full_moon - timedelta(days=1) <= observer.date.datetime().date() <= next_full_moon + timedelta(days=1):
         status = "Vollmond"
     elif observer.date.datetime().date() < next_full_moon < next_new_moon:
         status = "Zunehmend"
