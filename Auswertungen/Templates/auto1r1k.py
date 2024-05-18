@@ -6,11 +6,11 @@ from funktionen import awtrix3_send_app
 
 def auswertung(app, data, config):
     text = []
-    if bool(data[f"auto1r1k_Relais1aktiv"]):
-        relais_name = data.get(f"auto1r1k_Relais1Name", "")
+    if bool(data[f"auto1r1k_automation_Relais1aktiv"]):
+        relais_name = data.get(f"auto1r1k_automation_Relais1Name", "")
         text.append({"t": f" Relais 1 {relais_name} ", "c": "#c3ff00"})
-        color = "#00ff00" if int(data[f"auto1r1k_Relais1Kontakt1"]) else "#ff0000"
-        text.append({"t": str(int(data[f"auto1r1k_Relais1Kontakt1"])), "c": color})
+        color = "#00ff00" if int(data[f"auto1r1k_automation_Relais1Kontakt1"]) else "#ff0000"
+        text.append({"t": str(int(data[f"auto1r1k_automation_Relais1Kontakt1"])), "c": color})
         tasmota_power = data.get("auto1r1k_tasmota_Power", "")
         text.append({"t": f" akt. Energie {tasmota_power} W", "c": "#002fff"})
         tasmota_tag_power = data.get("auto1r1k_tasmota_Today", "")
