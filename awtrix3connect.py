@@ -38,6 +38,16 @@ Version 0.1.2  (13.05.2024)
 - InfluxDB Portangabe in config.ini nötig/möglich
 - Mondphasenberechnung gefixt
 
+Version 0.1.3  (18.05.2024)
+
+- div. Anpassungen 
+- Erweiterung der "Variablennamen" um den Namen der Datenbank
+  von bisher z.Bsp. "pv_Leistung" -> "pv_solaranzeige_Leistung" als 
+  Voraussetzung für's Abholen von Daten aus identischen Datenbanken mit 
+  unterschiedlichen Namen (z.Bsp. bei Einsatz von 2 WR (WR-1, WR-2))
+- Aktualisierung der Templates und Anpassung des Templates "pv.py" um 
+  Beispiel "Berechnungen(Summen) aus Werten mehrerer Datenbanken(WR)"
+
 """
 import configparser
 import time
