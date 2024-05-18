@@ -102,7 +102,7 @@ Es sollten jetzt alle benötigten Programmdaten unter
 
 angelegt sein und auch der dazugehörige Dienst wurde schon mit erstellt (aber noch nicht gestartet)!
 
-(Solltet Ihr das Installationsscript mehrmals aufgerufen haben, dann bitte händisch die "Mehrfach Alias Einträge" am Ende der ```/home/"username"/.bashrc``` entfernen, es soll nur je ein Eintrag übrig bleiben!)
+~~(Solltet Ihr das Installationsscript mehrmals aufgerufen haben, dann bitte händisch die "Mehrfach Alias Einträge" am Ende der ```/home/"username"/.bashrc``` entfernen, es soll nur je ein Eintrag übrig bleiben!)~~
 
 
 ---
