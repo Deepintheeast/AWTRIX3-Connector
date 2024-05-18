@@ -10,15 +10,15 @@ def auswertung(app, data, config):
     # 0 = aus, 1 = ein
     text = []
     for j in range(1, 3):  # 3 = Anzahl der Relais + 1
-        if bool(data[f"auto_Relais{j}aktiv"]):
+        if bool(data[f"auto_automation_Relais{j}aktiv"]):
             # Fügen Sie den Text für das Relais und seinen Namen hinzu
-            relais_name = data.get(f"auto_Relais{j}Name", "")
+            relais_name = data.get(f"auto_automation_Relais{j}Name", "")
             text.append({"t": f" Relais {j} {relais_name} ", "c": "#c3ff00"})
             # Fügen Sie die Werte der aktiven Kontakte hinzu
-            num_contacts = int(data[f"auto_Relais{j}AnzKontakte"])
+            num_contacts = int(data[f"auto_automation_Relais{j}AnzKontakte"])
             for i in range(1, num_contacts + 1):
-                color = "#00ff00" if int(data[f"auto_Relais{j}Kontakt{i}"]) else "#ff0000"
-                text.append({"t": str(int(data[f"auto_Relais{j}Kontakt{i}"])), "c": color})        
+                color = "#00ff00" if int(data[f"auto_automation_Relais{j}Kontakt{i}"]) else "#ff0000"
+                text.append({"t": str(int(data[f"auto_automation_Relais{j}Kontakt{i}"])), "c": color})        
     # Erstellen Sie das Dictionary nur, wenn Text vorhanden ist
     if text:
         for item in text:
