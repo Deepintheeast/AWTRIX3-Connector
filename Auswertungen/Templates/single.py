@@ -1,17 +1,21 @@
-""" Auswertung Template für einen einzelnen Wert
-WERT und ICON müssen an die verwendeten, gewünschten Werte angepasst werden"""
+""" Auswertung Template für einen einzelnen Wert"""
 
 # Importieren der benötigten Funktionen aus der Funktionen-Bibliothek
 from funktionen import awtrix3_send_app
 
 def auswertung(app, data, config):
     # Auswertung Template für einen einzelnen Wert
+
+    # Zuweisung Wert
+    WERT = int(data["WERT"])
+
+    # Aufbereitung der Daten für die Anzeige in der App
     data_app = {
-        "text": str(int(data["WERT"])) + " Irgendwas oder löschen! ", # oder
-        #"text": " Irgendwas oder löschen! " + str(int(data["WERT"])),
-        "icon": ICON, # Hier verwendetes Icon festlegen
-        "color": "#00ff00", # Hier Textfarbe festlegen
+        "text": "Bezeichnung: " + str(WERT),   
+        "icon": ICON,
+        "color": "#00ff00",
     }
+    # Senden der Daten an Awtrix3
     awtrix3_send_app(
         config["awtrix3"]["url"],
         app,
