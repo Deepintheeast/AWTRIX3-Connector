@@ -83,15 +83,11 @@ Um die Installation möglichst einfach zu gestalten gibt es ein Bash-Installatio
 
 Zur Installation bitte als "normaler User" auf einer Konsole an Eurer "Linux Installation" (zB. Solaranzeige) anmelden!
 
-Als erstes müssen wir das Script runterladen:
+Mit folgendem Aufruf wird der "Installer" runtergeladen und ausgeführt:
 
 ```
-wget https://raw.githubusercontent.com/Deepintheeast/AWTRIX3-Connector/main/install.sh
-```
-jetzt einfach das Script aufrufen und durchlaufen lassen:
+wget https://raw.githubusercontent.com/Deepintheeast/AWTRIX3-Connector/main/install.sh && bash ./install.sh
 
-```
-bash ./install.sh
 ```
 
 Tja, eigentlich war es das schon! 
