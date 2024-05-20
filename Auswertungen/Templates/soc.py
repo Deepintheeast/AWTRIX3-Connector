@@ -8,7 +8,7 @@ def auswertung(app, data, config):
     # und Anzeige des aktuellen SOC als Progressbar (Balken)
 
     #Zuweisung Wert SOC
-    SOC = int(data["soc_Pylontech_SOC"])
+    SOC = int(data["soc_solaranzeige_SOC"])
 
     #Auswahl des Icons und der Farbe je nach SOC-Wert
     icon = 0
