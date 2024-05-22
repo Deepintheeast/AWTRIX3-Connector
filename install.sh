@@ -103,10 +103,10 @@ fi
 echo ''
 echo 'Nach erfolgreicher Konfiguration und Test, den Dienst starten nicht vergessen!'
 echo ''
-echo 'Um die angelegten "Aliase" nutzen zu können, muss der Benutzer: '$username' ab- und neu angemeldet werden!'
-echo ''
+echo 'Durch den angelegten alias genügt zum starten des Scriptes ein awtrixconnect3 auf der Konsole!'
 echo 'Installation beendet! Viel Spaß!'
 echo ''
 
 rm -rf /home/$username/temp_awtrix3/
 rm -f /home/$username/install.sh
+source ~/.bashrc
