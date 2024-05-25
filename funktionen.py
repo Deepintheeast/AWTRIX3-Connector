@@ -294,7 +294,7 @@ class Scheduler:
                 "pushIcon": 0,
                 "rtttl": "s:d=4,o=6,b=185:c,p,c,p,c"
             }
-        awtrix3_send_notifikation(self.conf["awtrix3"]["url"], notify_data)
+            awtrix3_send_notifikation(self.conf["awtrix3"]["url"], notify_data)
 
     def notifikation_su(self):
         """Notifikation Sonnenuntergang"""
@@ -309,7 +309,7 @@ class Scheduler:
                 "pushIcon": 0,
                 "rtttl": "s:d=4,o=6,b=185:c,p,c,p,c"
             }
-        awtrix3_send_notifikation(self.conf["awtrix3"]["url"], notify_data)
+            awtrix3_send_notifikation(self.conf["awtrix3"]["url"], notify_data)
 
     def schedule_tasks(self):
         """Aufgaben für den Scheduler planen"""
