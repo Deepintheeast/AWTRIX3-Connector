@@ -98,8 +98,6 @@ Es sollten jetzt alle benötigten Programmdaten unter
 
 angelegt sein und auch der dazugehörige Dienst wurde schon mit erstellt (aber noch nicht gestartet)!
 
-~~(Solltet Ihr das Installationsscript mehrmals aufgerufen haben, dann bitte händisch die "Mehrfach Alias Einträge" am Ende der ```/home/"username"/.bashrc``` entfernen, es soll nur je ein Eintrag übrig bleiben!)~~
-
 
 ---
 
@@ -114,7 +112,7 @@ bearbeitet werden! Ihr findet in der "config.ini" entsprechende erklärende Komm
 
 
 
-Bevor ihr das Programm zum ersten mal startet bitte den User einmal ab und wieder anmelden und mindestens die IP-Adresse Eures AWTRIX (Ulanzi) in der "config.ini" einstellen! Bei der Installation wurde in der .bashrc ein "alias" angelegt und sollte jetzt auch aktiv sein. Dadurch könnte ihr jetzt durch Aufruf von
+Bevor ihr das Programm zum ersten mal startet bitte mindestens die IP-Adresse Eures AWTRIX (Ulanzi) in der "config.ini" einstellen! Bei der Installation wurde in der .bashrc ein "alias" angelegt und sollte jetzt auch aktiv sein. Dadurch könnte ihr jetzt durch Aufruf von
 
 ```
 awtrix3connect
