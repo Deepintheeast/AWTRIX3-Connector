@@ -47,7 +47,7 @@ def auswertung(app, data, config):
         "icon": 27283,
         "pushIcon": 2,
         "progress": int(SOC),
-        "progressc": "#00ff00",
+        "progressC": "#00ff00",
     }
 
     # Senden der Daten an Awtrix3
