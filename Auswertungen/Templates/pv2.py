@@ -12,7 +12,7 @@ def auswertung(app, data, config):
     # Zuweisung und mögliche Berechnungen und Anpassung der Werte
     leistung = str(int(data["pv2_solaranzeige_Leistung"]))
     tagesertrag = round(float(data["pv2_solaranzeige_Wh_GesamtHeute"] / 1000), 2)
-    soc = int(data["pv2_Pylontech_SOC"])+1
+    soc = int(data["pv2_solaranzeige_SOC"])+1
 
     # Aufbereitung der Daten für die Anzeige in der App
     # Farben für die Anzeige des Tagesertrags festlegen
