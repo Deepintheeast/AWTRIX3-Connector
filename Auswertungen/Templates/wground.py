@@ -76,7 +76,7 @@ def auswertung(app, data, config):
         elif temp < -10:
             niederschlag_text = "strenger Frost"
     else:
-        niederschlag_text = ""
+        niederschlag_text = niederschlag_text
 
     data_app = {
         "text": [
