@@ -484,7 +484,7 @@ def awtrix3_an_aus(url, on_off, run_true):
 
 def awtrix3_hell_set(url, helligkeit):
     """Start Helligkeit einstellen"""
-    awtrix3_url = url = url + "/api/settings"
+    awtrix3_url = url + "/api/settings"
     if helligkeit in ["a", "A"]:
         hell_data = {"ABRI": bool(1)}
     else:
