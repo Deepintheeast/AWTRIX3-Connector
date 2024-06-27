@@ -107,6 +107,6 @@ echo 'Durch den angelegten alias genügt zum starten des Scriptes ein awtrixconn
 echo 'Installation beendet! Viel Spaß!'
 echo ''
 
+source ~/.bashrc
 rm -rf /home/$username/temp_awtrix3/
 rm -f /home/$username/install.sh
-source ~/.bashrc
