@@ -40,6 +40,7 @@ if [ ! -d '/home/$username/temp_awtrix3' ]; then
   pip3 install ephem
   pip3 install schedule
   pip3 install influxdb
+  pip3 install influxdb-client
   pip3 install mysql-connector-python
   pip3 install psycopg2-binary
   
