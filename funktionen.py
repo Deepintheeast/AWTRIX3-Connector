@@ -8,6 +8,7 @@ import sqlite3
 import time
 import schedule
 from influxdb import InfluxDBClient
+from influxdb_client import InfluxDBClient as InfluxDBClient2
 import mysql.connector
 import psycopg2
 import requests
@@ -80,6 +81,26 @@ def query_database(d_app, d_group, d_config):
                 #key = f"{d_app}_{field}"
                 key = f"{d_app}_{db}_{field}"
                 combined_data[key] = point["last"]
+
+        elif flag == "influxdb2":
+            info = (info + ['', ''] * 3)[:6]
+            ip, bucket, measurement, field, org, password = info
+            # Erstellen Sie eine Verbindung zum InfluxDB-Server
+            client = InfluxDBClient2(url=f'http://{ip}',token=password,org=org)
+            # Erstellen der Abfrage
+            query_api = client.query_api()
+            query = f'from(bucket: "{bucket}") |> range(start: -1m) |> filter(fn: (r) => r["_measurement"] == "{measurement}") |> filter(fn: (r) => r["_field"] == "{field}") |> yield(name: "mean") |> last()'
+            # Ausführen der Abfrage
+            result = query_api.query(query,org)
+            # Ergebnis zum Daten-Dictionary hinzufügen
+            for point in result:
+                # Bezeichner und Feld als Schlüssel im Dictionary
+                #key = f"{d_app}_{field}"
+                key = f"{d_app}_{bucket}_{field}"
+                for record in point.records:
+                  combined_data[key] = record.get_value()
+
+
 
         elif flag == "sqlite":
             db_name, table, column = info
@@ -595,7 +616,7 @@ def get_tasmota(ip, gruppe, wert, user, passwort):
     try:
         response = requests.get(url, auth=(user, passwort), timeout=5)
         data = response.json()
-        if gruppe == 'ENERGY':
+        if gruppe == 'Strom':
             return data['StatusSNS'][gruppe][wert]
         elif gruppe.startswith('DS18B20'):
             print(data['StatusSNS'][gruppe][wert])
